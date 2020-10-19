@@ -1,0 +1,9 @@
+.dish-tile {
+    border: 1px solid #d2955d;
+    border-radius: .25rem;
+    display: block;
+}
+.dish-image {
+    height: 90px;
+    width: 60px;
+}

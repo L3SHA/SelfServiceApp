@@ -1,0 +1,72 @@
+<template>
+
+    <lightning-card icon-name="standard:apex_plugin">
+        <template if:true={isOrderCreating}>
+            <template if:true={recordId}>
+                <span slot="title">{dishName}</span>
+                <div class="slds-var-p-horizontal_small dish-tile-body">
+                    <img
+                        if:true={dishPictureUrl}
+                        src={dishPictureUrl.data}
+                        class="dish"
+                        alt="Dish picture"
+                    />
+                    <lightning-record-view-form
+                        record-id={recordId}
+                        onload={handleRecordLoaded}
+                        object-api-name="Dish__c"
+                        density="compact"
+                    >
+                       <lightning-output-field
+                            field-name={priceField}
+                        ></lightning-output-field>
+                        <lightning-output-field
+                            field-name={descriptionField}
+                        ></lightning-output-field> 
+    
+                    </lightning-record-view-form>
+                
+                </div>
+    
+                <lightning-textarea label="Comment to dish" placeholder="Your comment here..." value={comment}></lightning-textarea>
+                <div class="slds-form-element slds-text-align_center">
+                    <label class="slds-form-element__label slds-m-right_none">Number of servings</label>
+                    <div class="slds-form-element__control">
+                        <button class="slds-button slds-button_icon slds-button_icon-small slds-input__button_decrement">
+                            <lightning-icon onclick={handleRemoveServing} icon-name="utility:ban"  size="x-small"></lightning-icon>
+                        </button>     
+                        <input type="number" value={servingsAmount} onchange={handleChangeServingsAmount} class="slds-input slds-input_counter"/>
+                        <button class="slds-button slds-button_icon slds-button_icon-small slds-input__button_increment">
+                            <lightning-icon onclick={handleAddServing} icon-name="utility:new"  size="x-small"></lightning-icon>
+                        </button>        
+                    </div>
+                </div>
+                <p class="slds-var-m-bottom_xx-small">Total sum: 
+                    <lightning-formatted-number
+                        format-style="currency"
+                        currency-code="USD"
+                        value={totalSum}
+                        class="price"
+                        maximum-fraction-digits="0"
+                    ></lightning-formatted-number>
+                </p>
+                <button onclick={handleAddDishToOrder}>
+                    Add to order
+                </button>
+    
+            </template>
+            <template if:false={recordId}>
+                <p>Select a product to see details</p>
+            </template>
+        </template>
+        <template if:false={isOrderCreating}>
+            <button onclick={handleCreateOrder}>
+                Create order
+            </button>
+        </template>
+
+    </lightning-card>
+
+    
+
+</template>

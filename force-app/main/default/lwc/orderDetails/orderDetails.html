@@ -1,0 +1,24 @@
+<template>
+    <lightning-card title={name} class="dish-tile">
+        <div class="slds-var-p-horizontal_small dish-tile-body">
+            <div class="slds-media">
+                <div class="slds-media__figure">
+                    <img src={imageURL.data} alt="Dish image" class="dish-image"/>
+                </div>
+                <div class="slds-media__body">
+                    <p class="slds-var-m-bottom_xx-small">Total Sum: 
+                        <lightning-formatted-number
+                            format-style="currency"
+                            currency-code="USD"
+                            value={totalSum}
+                            class="price"
+                            maximum-fraction-digits="0"
+                        ></lightning-formatted-number>
+                    </p>
+                    <p class="slds-var-m-bottom_xx-small">Servings Amount: {servingsAmount}</p>
+                    <p class="slds-var-m-bottom_xx-small">Comment: {comment}</p>
+                </div>
+            </div>
+        </div>
+    </lightning-card>
+</template>

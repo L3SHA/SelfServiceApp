@@ -1,0 +1,16 @@
+<template>
+    <lightning-card title="Filters" icon-name="standard:calibration">
+        <div class="slds-m-horizontal_medium">
+            <section>
+                <lightning-slider
+                    label="Max Price"
+                    step="10"
+                    min="0"
+                    max="1000"
+                    value={maxPrice}
+                    onchange={handleMaxPriceChange}
+                ></lightning-slider>
+            </section>
+        </div>
+    </lightning-card>
+</template>

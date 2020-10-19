@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningMessageChannel xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>DishSelected</masterLabel>
+    <description>This event is fired when a dish is selected.</description>
+    <lightningMessageFields>
+        <fieldName>dishId</fieldName>
+        <description>Selected dish Id</description>
+    </lightningMessageFields>
+</LightningMessageChannel>

@@ -1,0 +1,37 @@
+<template>
+    <div class="slds-card slds-p-around_x-small">
+        <template if:true={orderId}>
+            <template if:true={orderDishes.data}>
+                <div class="content">
+                    <template
+                        for:each={orderDishes.data.records}
+                        for:item="orderDish"
+                        >
+                        <c-order-details
+                            key={orderDish.Name}
+                            orderdish={orderDish}
+                            class="slds-m-around_x-small"
+                        >
+                        </c-order-details>
+                    </template>
+                </div>
+                <div>
+                  <button onclick={handleSaveOrder}>Save order</button>  
+                </div>
+                <c-paginator
+                            page-number={pageNumber}
+                            page-size={orderDishes.data.pageSize}
+                            total-item-count={orderDishes.data.totalItemCount}
+                            onprevious={handlePreviousPage}
+                            onnext={handleNextPage}
+                ></c-paginator>
+            </template>
+            <template if:false={orderDishes.data}>
+                <p>Add dish to order</p>
+            </template>
+        </template>
+        <template if:false={orderId}>
+            <p>Create order to see details</p>
+        </template>
+    </div>    
+</template>

@@ -1,0 +1,27 @@
+<template>
+    <div class="slds-card slds-p-around_x-small">
+        <template if:true={dishes.data}>
+            <div class="content">
+                <template
+                    for:each={dishes.data.records}
+                    for:item="dish"
+                    >
+                    <c-dish-card
+                        key={dish.Name}
+                        dish={dish}
+                        onselected={handleDishSelected}
+                        class="slds-m-around_x-small"
+                    >
+                    </c-dish-card>
+                </template>
+            </div>
+            <c-paginator
+                        page-number={pageNumber}
+                        page-size={dishes.data.pageSize}
+                        total-item-count={dishes.data.totalItemCount}
+                        onprevious={handlePreviousPage}
+                        onnext={handleNextPage}
+            ></c-paginator>
+        </template>
+    </div>
+</template>
